@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.white,
         resizeToAvoidBottomInset: true, // Prevent overflow when keyboard opens
         body: LayoutBuilder(
           builder: (context, constraints) {
@@ -17,8 +18,9 @@ class MyApp extends StatelessWidget {
 
             return SafeArea(
               child: SingleChildScrollView(
-                padding: EdgeInsets.all(
-                  screenWidth * 0.04,
+                padding: EdgeInsets.symmetric(
+                  horizontal: screenWidth * 0.05,
+
                 ), // Responsive padding
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -27,28 +29,34 @@ class MyApp extends StatelessWidget {
                     // Top image
                     Image.asset(
                       'assets/image.jpg',
-                      height: screenHeight * 0.25, // Responsive height
+                      height: screenHeight * 0.4, // Responsive height
                     ),
                     SizedBox(height: screenHeight * 0.03), // Responsive spacing
                     // Login title
-                    Text(
-                      'Login',
-                      style: TextStyle(
-                        fontSize: screenWidth * 0.07, // Responsive font size
-                        fontWeight: FontWeight.bold,
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Login',
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.07, // Responsive font size
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                     SizedBox(height: screenHeight * 0.01),
 
                     // Subtitle
-                    Text(
-                      'Please Sign in to continue.',
-                      style: TextStyle(
-                        fontSize: screenWidth * 0.04, // Responsive font size
-                        color: Colors.grey,
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Please Sign in to continue.',
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.04, // Responsive font size
+                          color: Colors.grey,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                     SizedBox(height: screenHeight * 0.04),
 
