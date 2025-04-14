@@ -3,8 +3,16 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MyApp());
 }
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
 
-class MyApp extends StatelessWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool _isSwitchOn = false;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -59,7 +67,8 @@ class MyApp extends StatelessWidget {
                           'Please Sign in to continue.',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: screenWidth * 0.05, // Responsive font size
+                            fontSize:
+                                screenWidth * 0.05, // Responsive font size
                             color: Color.fromARGB(255, 27, 55, 77),
                           ),
                           textAlign: TextAlign.center,
@@ -73,12 +82,12 @@ class MyApp extends StatelessWidget {
                       obscureText: false,
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide.none
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none,
                         ),
                         focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide.none
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none,
                         ),
                         prefixIcon: Icon(Icons.person),
                         hintText: 'UserName',
@@ -95,11 +104,11 @@ class MyApp extends StatelessWidget {
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide.none
+                          borderSide: BorderSide.none,
                         ),
                         focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide.none
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none,
                         ),
                         prefixIcon: Icon(Icons.lock),
                         hintText: 'PassWord',
@@ -116,12 +125,28 @@ class MyApp extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Reminder me next time',
+                          'Remember me next time',
                           style: TextStyle(fontSize: screenWidth * 0.04),
                         ),
-                        Switch(value: false,
-                            activeColor: Color.fromARGB(255, 27, 55, 77),
-                            onChanged: (value) {}),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _isSwitchOn = !_isSwitchOn;
+                            });
+                          },
+                          child: Transform.scale(
+                            scale: 0.7,
+                            child: Switch(
+                              value: _isSwitchOn,
+                              activeColor: Color.fromARGB(255, 27, 55, 77),
+                              onChanged: (value) {
+                                setState(() {
+                                  _isSwitchOn = value;
+                                });
+                              },
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                     SizedBox(height: screenHeight * 0.01),
