@@ -1,16 +1,14 @@
-# login_page
+# Flutter Login App
 
-A new Flutter project.
+This Flutter application features a responsive login interface with password visibility toggle and remember me functionality.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- Responsive design that adapts to different screen sizes.
+- Toggle visibility for the password field.
+- A switch to remember user credentials.
+- Simple and clean user interface.
 
-A few resources to get you started if this is your first Flutter project:
+## Screenshots
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Login Screen](assets/im.jpg)
