@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MyApp());
 }
+
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -12,6 +13,13 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool _isSwitchOn = false;
+  bool _isObscured = true;
+
+  void _toggleVisibility() {
+    setState(() {
+      _isObscured = !_isObscured;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +108,7 @@ class _MyAppState extends State<MyApp> {
 
                     // Password field
                     TextField(
-                      obscureText: true,
+                      obscureText: _isObscured,
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
@@ -115,7 +123,14 @@ class _MyAppState extends State<MyApp> {
                         border: InputBorder.none,
                         filled: true,
                         fillColor: Colors.grey[200],
-                        suffixIcon: Icon(Icons.visibility),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _isObscured
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
+                          onPressed: _toggleVisibility,
+                        ),
                       ),
                     ),
                     SizedBox(height: screenHeight * 0.01),
